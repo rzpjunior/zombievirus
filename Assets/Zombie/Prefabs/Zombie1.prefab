@@ -1668,6 +1668,7 @@ GameObject:
   - component: {fileID: 7389507112651452681}
   - component: {fileID: 8099522074582997812}
   - component: {fileID: 5591255314035518813}
+  - component: {fileID: 2968717587323209016}
   m_Layer: 0
   m_Name: Zombie1
   m_TagString: Untagged
@@ -1683,7 +1684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4493914613880827488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -11.52, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 3095270377931777224}
@@ -1752,6 +1753,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!65 &2968717587323209016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493914613880827488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35955232, y: 1.0250005, z: 0.24}
+  m_Center: {x: 0, y: 1.3116305, z: 0}
 --- !u!1 &4710940672626480558
 GameObject:
   m_ObjectHideFlags: 0

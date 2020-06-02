@@ -25,6 +25,12 @@ public class Zombie : MonoBehaviour
         transform.LookAt(m_TargetTransform);
     }
 
+    public void TakeDamage()
+    {
+        Debug.Log(gameObject.name+" take damage");
+        Deactivate();
+    }
+
     // Update is called once per frame
     void Update()
     {
