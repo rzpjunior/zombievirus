@@ -20,6 +20,7 @@ public class ZombieSpawner
     private List<Zombie> m_Instantiateds;
     private System.Random m_RandomXPos = new System.Random();
     private Vector3 m_VectorZero = new Vector3(0,0,0);
+    private int m_PreviousXPos;
     public void Create()
     {
         m_Instantiateds = new List<Zombie>(m_InitialCount);
@@ -64,11 +65,28 @@ public class ZombieSpawner
     public void Spawn()
     {
         var zombie = GetOrCreateZombie();
+        //camera horizon size, create random number between -200 to 600 with step of 100
         int randomXPos = m_RandomXPos.Next(-2, 6)*100;
+        while (randomXPos==m_PreviousXPos)
+        {
+             randomXPos = m_RandomXPos.Next(-2, 6)*100;  
+        }
+        m_PreviousXPos = randomXPos;
         float xpos = randomXPos;
         float speed = UnityEngine.Random.Range(m_ZombieRandomWalkSpeedMin, m_ZombieRandomWalkSpeedMax);
         Vector3 spawnPos = m_TargetMove.position + m_TargetMove.forward * 1000;
         spawnPos.x = xpos;
         zombie.Activate(m_TargetMove, spawnPos, speed);
+    }
+
+    public void DeactivateAll()
+    {
+        foreach (var item in m_Instantiateds)
+        {
+            if(item.State!=ZombieState.Inactive)
+            {
+                item.Deactivate();
+            }
+        }
     }
 }

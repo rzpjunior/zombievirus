@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
+    [SerializeField]
+    private Animator m_AnimationController;
     private float m_MoveSpeed;
     private Transform m_TargetTransform;
     private ZombieState m_ZombieState = ZombieState.Inactive;
@@ -11,6 +13,10 @@ public class Zombie : MonoBehaviour
 
     public void Deactivate()
     {
+        if(m_ZombieState==ZombieState.ActiveAttack)
+        {
+            GameData.ZOMBIE_ATTACKER_COUNT--;
+        }
         m_ZombieState = ZombieState.Inactive;
         gameObject.SetActive(false);
     }
@@ -31,6 +37,13 @@ public class Zombie : MonoBehaviour
         Deactivate();
     }
 
+    private void Attack()
+    {
+        m_ZombieState=ZombieState.ActiveAttack;
+        m_AnimationController.CrossFade("Attack", 1);
+        GameData.ZOMBIE_ATTACKER_COUNT++;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -39,6 +52,10 @@ public class Zombie : MonoBehaviour
             float step = m_MoveSpeed * Time.deltaTime;
             
             transform.position = Vector3.MoveTowards(transform.position, m_TargetTransform.position, step);
+            if(Vector3.Distance(transform.position, m_TargetTransform.position)<330)
+            {
+                Attack();
+            }
             if(Vector3.Distance(transform.position, m_TargetTransform.position)<0.001f)
             {
                 Deactivate();

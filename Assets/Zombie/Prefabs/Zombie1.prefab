@@ -1667,7 +1667,6 @@ GameObject:
   - component: {fileID: 578376449398627443}
   - component: {fileID: 7389507112651452681}
   - component: {fileID: 8099522074582997812}
-  - component: {fileID: 5591255314035518813}
   - component: {fileID: 2968717587323209016}
   m_Layer: 0
   m_Name: Zombie1
@@ -1713,9 +1712,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4493914613880827488}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2ef8e6599b7f9934e8ff0d64c5325a1f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0cd41f0bef0cff04ea33767165ba438b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1736,23 +1735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f11b5c1068e3ed4ca8d411832ed72c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!111 &5591255314035518813
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4493914613880827488}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: -6257440219318784398, guid: 165698eac7ca81041ad603fc5a3afa55,
-    type: 3}
-  m_Animations:
-  - {fileID: -6257440219318784398, guid: 165698eac7ca81041ad603fc5a3afa55, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
+  m_AnimationController: {fileID: 7389507112651452681}
 --- !u!65 &2968717587323209016
 BoxCollider:
   m_ObjectHideFlags: 0
