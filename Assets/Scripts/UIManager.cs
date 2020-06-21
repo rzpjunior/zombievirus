@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,8 +11,16 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI m_playerHealthLabel;
     [SerializeField]
-    private GameObject[] icons;
+    private GameObject m_GameplayUI;
+    [SerializeField]
+    private TextMeshProUGUI m_CountDownLabel;
+    [SerializeField]
+    private TextMeshProUGUI m_ScoreLabel;
     private GameManager game;
+    [SerializeField]
+    private GameCompleteUI m_gameCompleteUI;
+    [SerializeField]
+    private GameOverUI m_gameOverUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,18 +40,30 @@ public class UIManager : MonoBehaviour
     {
         m_bulletLabel.text = label;
     }
+    public void UpdateCountDown(string label)
+    {
+        m_CountDownLabel.text = label;
+    }
+    public void UpdatePlayerScore(string label)
+    {
+        m_ScoreLabel.text = label;
+    }
     public void UpdatePlayerHealthLabel(string label)
     {
         m_playerHealthLabel.text = label;
     }
-    public void HideAll()
+    private void HideGameplayUI()
     {
-        foreach (var item in icons)
-        {
-            item.SetActive(false);
-        }
-        m_ShootTapBtn.gameObject.SetActive(false);
-        m_bulletLabel.gameObject.SetActive(false);
-        m_playerHealthLabel.gameObject.SetActive(false);
+        m_GameplayUI.SetActive(false);
+    }
+    public void SetGameComplete(int playerScore, int zombieKilled)
+    {
+        HideGameplayUI();
+        m_gameCompleteUI.Show(playerScore, zombieKilled);
+    }
+    public void SetGameOver()
+    {
+        HideGameplayUI();
+        m_gameOverUI.Show();
     }
 }

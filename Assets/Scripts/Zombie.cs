@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
@@ -10,7 +8,9 @@ public class Zombie : MonoBehaviour
     private Transform m_TargetTransform;
     private ZombieState m_ZombieState = ZombieState.Inactive;
     public ZombieState State {get {return m_ZombieState;}}
-
+    private int m_Health = 0;
+    private const int MIN_HEALTH = 1;
+    private const int MAX_HEALTH = 3;
     public void Deactivate()
     {
         if(m_ZombieState==ZombieState.ActiveAttack)
@@ -23,6 +23,7 @@ public class Zombie : MonoBehaviour
 
     public void Activate(Transform targetTransform, Vector3 initialPos, float moveSpeed=40.0f)
     {
+        m_Health = UnityEngine.Random.Range(MIN_HEALTH, MAX_HEALTH+1);
         transform.position = initialPos;
         m_TargetTransform = targetTransform;
         m_MoveSpeed = moveSpeed;
@@ -31,10 +32,16 @@ public class Zombie : MonoBehaviour
         transform.LookAt(m_TargetTransform);
     }
 
-    public void TakeDamage()
+    public bool TakeDamage()
     {
-        Debug.Log(gameObject.name+" take damage");
-        Deactivate();
+        m_Health--;
+        if(m_Health<=0)
+        {
+            
+            Deactivate();
+            return true;
+        }
+        return false;
     }
 
     private void Attack()
