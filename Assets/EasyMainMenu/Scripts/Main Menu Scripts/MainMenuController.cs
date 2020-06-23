@@ -133,7 +133,7 @@ public class MainMenuController : MonoBehaviour
     public void newGame()
 
     {
-        SceneManager.LoadScene("Player", LoadSceneMode.Single);
+        SceneManager.LoadScene("POI - Demo", LoadSceneMode.Single);
     }
     #endregion
 
